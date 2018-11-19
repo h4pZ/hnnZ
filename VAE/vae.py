@@ -5,10 +5,6 @@ import torch
 from torch import nn
 
 
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-print(f"Using device: {device}")
-
-
 class VAE(nn.Module):
     def __init__(self, encoder_sizes=(784, 400), latent_size=20):
         """MODEL DESCRIPTION"""
@@ -61,6 +57,9 @@ class VAE(nn.Module):
 
 
 if __name__ == "__main__":
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    print(f"Using device: {device}")
+
     model = VAE()
     model.to(device)
     print(model)
