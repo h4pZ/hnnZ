@@ -31,10 +31,10 @@ class VAE(nn.Module):
                 in_features=self.decoder_sizes[layer_i],
                 out_features=self.decoder_sizes[layer_i + 1])))
 
-        # Assembling the encoder, decoder and latent space.
         # Dimensions of mu and logvar.
         dims = (self.encoder_sizes[-1], latent_size)
 
+        # Assembling the encoder, decoder and latent space.
         self.encoder = nn.Sequential(*self.encoder_layers)
         self.mu, self.logvar = nn.Linear(*dims), nn.Linear(*dims)
         self.decoder = nn.Sequential(*self.decoder_layers)
